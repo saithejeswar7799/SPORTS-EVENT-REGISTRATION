@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin – Registrations</title>
+</head>
+
+<body style="font-family:Poppins; text-align:center">
+
+<h1>📋 Registered Teams</h1>
+
+<table border="1" cellpadding="10" align="center">
+  <thead>
+    <tr>
+      <th>Sport</th>
+      <th>Class</th>
+      <th>Captain</th>
+      <th>Phone</th>
+      <th>Members</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+const tableBody = document.getElementById("tableBody");
+
+bookings.forEach(b => {
+  const row = `
+    <tr>
+      <td>${b.sport}</td>
+      <td>${b.class}</td>
+      <td>${b.captain}</td>
+      <td>${b.phone}</td>
+      <td>${b.members.join(", ")}</td>
+      <td>${b.time}</td>
+    </tr>
+  `;
+  tableBody.innerHTML += row;
+});
+</script>
+
+</body>
+</html>
