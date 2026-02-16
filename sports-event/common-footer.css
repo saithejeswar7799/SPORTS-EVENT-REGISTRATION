@@ -1,0 +1,208 @@
+/* Common Footer Styles for All Pages */
+.footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+    font-weight: 600;
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.footer .contact-info {
+    margin: 25px 0;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer .contact-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.footer .emoji {
+    font-size: 1.2rem;
+    min-width: 20px;
+}
+
+.footer .social-links {
+    margin: 30px 0;
+    font-size: 1.1rem;
+}
+
+.footer .social-links p {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.footer .social-links a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.footer .social-links a:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.footer .copyright {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Ensure footer is always at bottom on short pages */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 15px;
+        margin-top: 30px;
+    }
+
+    .footer h3 {
+        font-size: 1.3rem;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+    }
+
+    .footer .contact-info {
+        padding: 20px 15px;
+        margin: 20px 10px;
+    }
+
+    .footer .contact-info p {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .footer .social-links {
+        font-size: 1rem;
+    }
+
+    .footer .social-links a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+
+    .footer .copyright {
+        margin-top: 25px;
+        padding-top: 20px;
+        font-size: 0.8rem;
+    }
+}
+
+/* For pages without main wrapper */
+.footer-simple {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-simple .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-simple h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.footer-simple p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.footer-simple .social-links {
+    margin: 20px 0;
+}
+
+.footer-simple .social-links a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 12px;
+    transition: color 0.3s ease;
+}
+
+.footer-simple .social-links a:hover {
+    color: white;
+}
+
+.footer-simple .copyright {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .footer-simple {
+        padding: 25px 15px;
+        margin-top: 30px;
+    }
+
+    .footer-simple h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer-simple p {
+        font-size: 0.85rem;
+    }
+
+    .footer-simple .social-links a {
+        margin: 0 8px;
+        font-size: 0.85rem;
+    }
+}

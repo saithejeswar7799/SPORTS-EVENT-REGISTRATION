@@ -1,62 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sports Booking Form</title>
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Booking Form - Register Your Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="booking-enhanced.css">
+  <link rel="stylesheet" href="common-footer.css">
 </head>
+<body>
+  <nav class="navbar">
+    <img src="./assets/fsb-logo.jpeg" alt="FSB Logo" class="logo">
+    <div class="nav-links">
+        <a href="home.html">🏠 Home</a>
+        <a href="booking-form.html" class="active">📝 Register</a>
+    </div>
+  </nav>
+  
+  <div class="booking-container">
+    <div class="header">
+      <h1>⚡ Sports Event Registration</h1>
+      <p>Join the excitement and register your team for the ultimate sports competition!</p>
+    </div>
+    
+    <div class="form-container">
+      <form id="bookingForm" class="booking-form">
+        
+        <div class="sport-selection">
+          <div class="form-group">
+            <label>Choose Your Sport:</label>
+            <div class="sport-cards">
+              <div class="sport-card" data-sport="cricket" onclick="selectSport('cricket')">
+                <img src="./assets/cricket-image.jpg" 
+                     alt="Cricket" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150x150/ff6b6b/ffffff?text=CRICKET'">
+                <h3>🏏 Cricket</h3>
+                <div class="team-size">7 Players</div>
+              </div>
+              
+              <div class="sport-card" data-sport="badminton" onclick="selectSport('badminton')">
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=150&h=150&fit=crop&crop=center" 
+                     alt="Badminton" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150x150/ff6b6b/ffffff?text=BADMINTON'">
+                <h3>🏸 Badminton</h3>
+                <div class="team-size">2 Players</div>
+              </div>
+              
+              <div class="sport-card" data-sport="carrom" onclick="selectSport('carrom')">
+                <img src="https://images.unsplash.com/photo-1612036772280-2677265e2e4c?w=150&h=150&fit=crop&crop=center" 
+                     alt="Carrom" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150x150/ff6b6b/ffffff?text=CARROM'">
+                <h3>🎯 Carrom Board</h3>
+                <div class="team-size">2 Players</div>
+              </div>
+              
+              <div class="sport-card" data-sport="chess" onclick="selectSport('chess')">
+                <img src="https://images.unsplash.com/photo-1523875191458-a8c8c8b9f9b7?w=150&h=150&fit=crop&crop=center" 
+                     alt="Chess" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150x150/ff6b6b/ffffff?text=CHESS'">
+                <h3>♟️ Chess</h3>
+                <div class="team-size">1 Player</div>
+              </div>
+              
+              <div class="sport-card" data-sport="tug_of_war" onclick="selectSport('tug_of_war')">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop&crop=center" 
+                     alt="Tug of War" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150x150/ff6b6b/ffffff?text=TUG+OF+WAR'">
+                <h3>💪 Tug of War</h3>
+                <div class="team-size">8 Players</div>
+              </div>
+              
+              <div class="sport-card" data-sport="kho_kho" onclick="selectSport('kho_kho')">
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=150&h=150&fit=crop&crop=center" 
+                     alt="Kho Kho" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150x150/ff6b6b/ffffff?text=KHO+KHO'">
+                <h3>🏃 Kho Kho</h3>
+                <div class="team-size">9 Players</div>
+              </div>
+            </div>
+          </div>
+          
+          <input type="hidden" id="sport" name="sport" required>
+        </div>
 
-<body style="text-align: center; font-family: Poppins">
+        <!-- Dynamic team members -->
+        <div id="teamFormContainer"></div>
 
-  <h1>Sports Booking Form</h1>
+        <div class="form-group">
+          <label for="captain">👑 Team Captain Name:</label>
+          <input type="text" id="captain" name="captain" placeholder="Enter captain's full name" required>
+        </div>
 
-  <!-- FORM -->
-  <form id="bookingForm" class="form">
+        <div class="form-group">
+          <label for="className">📚 Class / Section:</label>
+          <input type="text" id="className" name="className" placeholder="e.g., 10th-A, B.Com III" required>
+        </div>
 
-    <label for="sport">Select Sport:</label><br>
-    <select id="sport" name="sport" onchange="showTeamForm()" required>
-      <option value="" selected disabled>Select a sport</option>
-      <option value="cricket">Cricket</option>
-      <option value="carrom">Carrom Board</option>
-      <option value="badminton">Badminton</option>
-      <option value="chess">Chess</option>
-      <option value="tug_of_war">Tug of War</option>
-      <option value="kho_kho">Kho Kho</option>
-    </select><br><br>
+        <div class="form-group">
+          <label for="phone">📱 Phone Number:</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter 10-digit mobile number"
+            pattern="[0-9]{10}"
+            maxlength="10"
+            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)"
+            required
+          >
+        </div>
 
-    <!-- Dynamic team members -->
-    <div id="teamFormContainer"></div>
+        <button type="submit" id="submitBtn" class="submit-btn">
+          <span id="btnText">🚀 Submit Registration</span>
+          <span id="btnLoading" class="loading" style="display: none;"></span>
+        </button>
+        
+        <div id="statusMsg" class="status-message" style="display: none;"></div>
+      </form>
+    </div>
+  </div>
+  
+  <footer class="footer-simple">
+    <div class="footer-content">
+        <h3>🏆 FSB Sports Meet 2026</h3>
+        <div class="contact-info">
+            <p><span class="emoji">📞</span> Contact: 9XXXXXXXXX</p>
+            <p><span class="emoji">📧</span> Email: sportsmeet@fsbcollege.edu</p>
+        </div>
+        <div class="social-links">
+            <a href="#">Instagram</a> | 
+            <a href="#">WhatsApp</a>
+        </div>
+        <div class="copyright">
+            © 2026 FSB Degree College. All rights reserved.
+        </div>
+    </div>
+  </footer>
 
-    <label for="captain">Team Captain:</label><br>
-    <input type="text" id="captain" required><br><br>
-
-    <label for="className">Class / Section:</label><br>
-    <input type="text" id="className" required><br><br>
-
-    <label for="phone">Phone Number:</label><br>
-    <input
-      type="tel"
-      id="phone"
-      pattern="[0-9]{10}"
-      maxlength="10"
-      placeholder="Enter 10-digit number"
-      oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)"
-      required
-    ><br><br>
-
-    <input type="submit" id="submitBtn" value="Submit Booking">
-    <p id="statusMsg" style="color: green;"></p>
-
-
-  </form>
-
-  <!-- SCRIPT -->
   <script>
+    let selectedSport = '';
+    
+    // Function to select sport and show team form
+    function selectSport(sport) {
+      console.log('Sport selected:', sport);
+      
+      // Remove previous selection
+      document.querySelectorAll('.sport-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      
+      // Add selection to clicked card
+      const selectedCard = document.querySelector(`[data-sport="${sport}"]`);
+      if (selectedCard) {
+        selectedCard.classList.add('selected');
+        console.log('Sport card selected successfully');
+      }
+      
+      // Set hidden input value
+      document.getElementById('sport').value = sport;
+      selectedSport = sport;
+      
+      // Show team form
+      showTeamForm();
+    }
+    
+    // Function to generate team member inputs
     function showTeamForm() {
-      const sport = document.getElementById("sport").value;
+      const sport = selectedSport || document.getElementById("sport").value;
       const container = document.getElementById("teamFormContainer");
 
       container.innerHTML = "";
-      if (!sport) return;
+      if (!sport) {
+        console.log('No sport selected, hiding team form');
+        return;
+      }
 
       const teamSizes = {
         cricket: 7,
@@ -68,74 +191,294 @@
       };
 
       const members = teamSizes[sport];
-
+      console.log(`Generating form for ${sport} with ${members} members`);
+      
+      const teamDiv = document.createElement("div");
+      teamDiv.className = "team-members";
+      
       const title = document.createElement("h3");
-      title.innerText = `Enter ${members} Team Member(s)`;
-      container.appendChild(title);
+      title.innerText = `👥 Team Members (${members} Player${members > 1 ? 's' : ''})`;
+      teamDiv.appendChild(title);
+      
+      const inputsContainer = document.createElement("div");
+      inputsContainer.className = "member-inputs";
 
       for (let i = 1; i <= members; i++) {
+        const memberDiv = document.createElement("div");
+        memberDiv.className = "member-input";
+        
+        const numberSpan = document.createElement("span");
+        numberSpan.className = "member-number";
+        numberSpan.innerText = i;
+        
         const input = document.createElement("input");
         input.type = "text";
         input.placeholder = `Member ${i} Name`;
         input.required = true;
-        input.style.display = "block";
-        input.style.margin = "8px auto";
-        container.appendChild(input);
+        input.name = `member_${i}`;
+        input.id = `member_${i}`;
+        
+        // Add validation
+        input.addEventListener('input', function() {
+          validateMemberInput(this);
+        });
+        
+        memberDiv.appendChild(numberSpan);
+        memberDiv.appendChild(input);
+        inputsContainer.appendChild(memberDiv);
+      }
+      
+      teamDiv.appendChild(inputsContainer);
+      container.appendChild(teamDiv);
+      
+      console.log('Team form generated successfully');
+    }
+    
+    // Function to validate member input
+    function validateMemberInput(input) {
+      const value = input.value.trim();
+      if (value.length < 2) {
+        input.style.borderColor = '#ff6b6b';
+      } else {
+        input.style.borderColor = '#28a745';
       }
     }
-
-  let isSubmitting = false; // 🔒 lock to prevent multiple submits
-
-  document.getElementById("bookingForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    if (isSubmitting) return; // 🚫 block duplicate clicks
-    isSubmitting = true;
-
-    const submitBtn = document.getElementById("submitBtn");
-    const statusMsg = document.getElementById("statusMsg");
-
-    submitBtn.disabled = true;
-    submitBtn.value = "Submitting...";
-    statusMsg.innerText = "Please wait, submitting your booking...";
-
-    const members = [];
-    document.querySelectorAll("#teamFormContainer input").forEach(i => {
-      members.push(i.value);
+    
+    // Function to validate phone number
+    function validatePhone(phone) {
+      const phoneRegex = /^[0-9]{10}$/;
+      return phoneRegex.test(phone);
+    }
+    
+    // Function to validate form
+    function validateForm() {
+      const sport = document.getElementById("sport").value;
+      const captain = document.getElementById("captain").value.trim();
+      const className = document.getElementById("className").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      
+      let errors = [];
+      
+      if (!sport) errors.push('Please select a sport');
+      if (captain.length < 2) errors.push('Captain name must be at least 2 characters');
+      if (className.length < 2) errors.push('Class/Section must be at least 2 characters');
+      if (!validatePhone(phone)) errors.push('Please enter a valid 10-digit phone number');
+      
+      // Check team members
+      const memberInputs = document.querySelectorAll("#teamFormContainer input");
+      memberInputs.forEach((input, index) => {
+        if (input.value.trim().length < 2) {
+          errors.push(`Team Member ${index + 1} name must be at least 2 characters`);
+        }
+      });
+      
+      return errors;
+    }
+    
+    // Function to show validation errors
+    function showValidationErrors(errors) {
+      const statusMsg = document.getElementById("statusMsg");
+      statusMsg.style.display = 'block';
+      statusMsg.className = 'status-message error';
+      statusMsg.innerHTML = `❌ Please fix the following errors:<br>${errors.join('<br>')}`;
+    }
+    
+    // Function to clear validation messages
+    function clearValidationMessages() {
+      const statusMsg = document.getElementById("statusMsg");
+      statusMsg.style.display = 'none';
+      statusMsg.className = 'status-message';
+    }
+    
+    // Add input event listeners for real-time validation
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Booking form loaded successfully');
+      
+      // Phone number validation
+      const phoneInput = document.getElementById("phone");
+      phoneInput.addEventListener('input', function() {
+        const value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+        this.value = value;
+        
+        if (value.length === 10) {
+          this.style.borderColor = '#28a745';
+        } else if (value.length > 0) {
+          this.style.borderColor = '#ffc107';
+        } else {
+          this.style.borderColor = '#e0e0e0';
+        }
+      });
+      
+      // Captain name validation
+      const captainInput = document.getElementById("captain");
+      captainInput.addEventListener('input', function() {
+        const value = this.value.trim();
+        if (value.length >= 2) {
+          this.style.borderColor = '#28a745';
+        } else if (value.length > 0) {
+          this.style.borderColor = '#ffc107';
+        } else {
+          this.style.borderColor = '#e0e0e0';
+        }
+      });
+      
+      // Class name validation
+      const classInput = document.getElementById("className");
+      classInput.addEventListener('input', function() {
+        const value = this.value.trim();
+        if (value.length >= 2) {
+          this.style.borderColor = '#28a745';
+        } else if (value.length > 0) {
+          this.style.borderColor = '#ffc107';
+        } else {
+          this.style.borderColor = '#e0e0e0';
+        }
+      });
+      
+      // Clear validation messages when user starts typing
+      [captainInput, classInput, phoneInput].forEach(input => {
+        input.addEventListener('focus', clearValidationMessages);
+      });
     });
 
-    const data = {
-      sport: document.getElementById("sport").value,
-      class: document.getElementById("className").value,
-      captain: document.getElementById("captain").value,
-      phone: document.getElementById("phone").value,
-      members: members,
-      timestamp: new Date().toISOString() // 👈 helpful for backend
-    };
+    let isSubmitting = false;
 
-    fetch("https://script.google.com/macros/s/AKfycbw-_k_Gis74GikmjdWdIggm4YGJNUEbvfkeF2ar8Gwxolu0apNBF6uVIdYppAG1_NMw/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(() => {
-      window.location.href = "success.html";
-    })
-    .catch(err => {
-      alert("Submission failed. Please try again.");
-      console.error(err);
+    // Form submission handler
+    document.getElementById("bookingForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      console.log('Form submission started');
 
-      // 🔓 unlock ONLY if failed
-      isSubmitting = false;
-      submitBtn.disabled = false;
-      submitBtn.value = "Submit Booking";
-      statusMsg.innerText = "";
+      if (isSubmitting) {
+        console.log('Form already submitting, ignoring');
+        return;
+      }
+      
+      // Validate form before submission
+      const errors = validateForm();
+      if (errors.length > 0) {
+        showValidationErrors(errors);
+        return;
+      }
+      
+      isSubmitting = true;
+      console.log('Form validation passed, submitting...');
+
+      const submitBtn = document.getElementById("submitBtn");
+      const btnText = document.getElementById("btnText");
+      const btnLoading = document.getElementById("btnLoading");
+      const statusMsg = document.getElementById("statusMsg");
+
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline-block';
+      
+      statusMsg.style.display = 'block';
+      statusMsg.className = 'status-message';
+      statusMsg.innerText = "⏳ Submitting your registration...";
+
+      const members = [];
+      document.querySelectorAll("#teamFormContainer input").forEach(i => {
+        members.push(i.value.trim());
+      });
+
+      const data = {
+        sport: document.getElementById("sport").value,
+        class: document.getElementById("className").value.trim(),
+        captain: document.getElementById("captain").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        members: members,
+        timestamp: new Date().toISOString()
+      };
+      
+      console.log('Submitting data:', data);
+
+      fetch("https://script.google.com/macros/s/AKfycbw-_k_Gis74GikmjdWdIggm4YGJNUEbvfkeF2ar8Gwxolu0apNBF6uVIdYppAG1_NMw/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        console.log('Fetch response received:', response);
+        // Store data locally as backup
+        localStorage.setItem('lastBooking', JSON.stringify(data));
+        
+        // Redirect to success page
+        window.location.href = "success.html";
+      })
+      .catch(err => {
+        console.error('Submission error:', err);
+        
+        // Store data locally as backup
+        localStorage.setItem('lastBooking', JSON.stringify(data));
+        
+        statusMsg.className = 'status-message error';
+        statusMsg.innerHTML = `❌ Submission failed. Please try again.<br>Error: ${err.message}`;
+        
+        // Reset submit button
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      });
     });
-  });
-</script>
+    
+    // Add keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && e.target.tagName !== 'INPUT') {
+        e.preventDefault();
+        document.getElementById('submitBtn').click();
+      }
+    });
+    
+    // Add reset functionality
+    function resetForm() {
+      document.getElementById('bookingForm').reset();
+      document.getElementById('teamFormContainer').innerHTML = '';
+      document.querySelectorAll('.sport-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      selectedSport = '';
+      clearValidationMessages();
+      
+      // Reset input borders
+      document.querySelectorAll('input').forEach(input => {
+        input.style.borderColor = '#e0e0e0';
+      });
+      
+      console.log('Form reset successfully');
+    }
+    
+    // Add reset button (optional)
+    const resetBtn = document.createElement('button');
+    resetBtn.type = 'button';
+    resetBtn.className = 'reset-btn';
+    resetBtn.innerText = '🔄 Reset Form';
+    resetBtn.style.cssText = `
+      margin-left: 10px;
+      padding: 15px 25px;
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    `;
+    resetBtn.addEventListener('click', resetForm);
+    resetBtn.addEventListener('mouseenter', function() {
+      this.style.background = '#5a6268';
+    });
+    resetBtn.addEventListener('mouseleave', function() {
+      this.style.background = '#6c757d';
+    });
+    
+    // Add reset button to form
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.parentNode.insertBefore(resetBtn, submitBtn.nextSibling);
+  </script>
 
 
 </body>
